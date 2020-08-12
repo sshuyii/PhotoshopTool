@@ -1,3 +1,5 @@
+//based on work from https://gist.github.com/tomekc/2892034
+
 //Set Photoshop to use pixel measurements  
 app.preferences.rulerUnits = Units.PIXELS  
 
