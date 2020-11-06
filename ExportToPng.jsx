@@ -1,3 +1,11 @@
+//this script helps you export any layer or group in your psd file that end with ".png" to a separate png file:)
+
+//usage: 
+//1.name the group/layer you want to export as anyName.png (it has to end with ".png")
+//2.change the variable in line14
+//3.File-Scripts-Browse...
+
+
 //Set Photoshop to use pixel measurements  
 app.preferences.rulerUnits = Units.PIXELS  
 
@@ -26,14 +34,15 @@ function duplicateGroupToDoc(layer)
     createNewDoc();
 
     var x = docRef.layerSets.length;
-    if (x > 0)
-    {     
-        app.activeDocument = docRef;//set active document
-        activeDocument.activeLayer = layer;
+    
+    app.activeDocument = docRef;//set active document
+    activeDocument.activeLayer = layer;
 
-        newLayerSetRef = layer.duplicate(app.documents["Clipped Group"], ElementPlacement.PLACEATBEGINNING);  
-        app.activeDocument = newDocRef;             
-    }
+    newLayerSetRef = layer.duplicate(app.documents["Clipped Group"], ElementPlacement.PLACEATBEGINNING);  
+
+    app.activeDocument = newDocRef;    
+    newDocRef.activeLayer = newLayerSetRef;
+    newLayerSetRef.name = layer.name;
 }
 
 
